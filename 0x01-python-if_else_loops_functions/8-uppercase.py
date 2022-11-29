@@ -11,4 +11,4 @@ def uppercase(str):
         if islower(c):
             c = chr(ord(c) - 32)
         print("{}".format(c), end="")
-    print("\n")
+    print("")
