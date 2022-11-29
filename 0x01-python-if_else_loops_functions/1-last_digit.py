@@ -4,7 +4,7 @@ number = random.randint(-10000, 10000)
 if number < 0:
     n = number * -1
     n %= 10
-    n *= -1 
+    n *= -1
 else:
     n = number % 10
 if n > 5:
