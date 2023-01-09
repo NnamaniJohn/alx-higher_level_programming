@@ -7,7 +7,7 @@ class MyInt(int):
     """MyInt class"""
 
     def __new__(cls, value):
-        return  super(MyInt, cls).__new__(cls, value)
+        return super(MyInt, cls).__new__(cls, value)
 
     def __eq__(self, other):
         return self > other or self < other
