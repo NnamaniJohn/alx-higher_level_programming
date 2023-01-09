@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 """lookup module has one function lookup"""
+
+
 def lookup(obj):
     """
     a function that returns the list of available
