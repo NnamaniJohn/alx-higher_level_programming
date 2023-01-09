@@ -9,9 +9,9 @@ class Square(Rectangle):
     """A Square class"""
 
     def __init__(self, size):
-        super().__init__(size, size)
         try:
             self.integer_validator("size", size)
+            super().__init__(size, size)
             self.__size = size
         except Exception as e:
             raise e
