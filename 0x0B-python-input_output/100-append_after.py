@@ -4,6 +4,9 @@
 
 
 def append_after(filename="", search_string="", new_string=""):
+    """
+    append after
+    """
     text = ""
     with open(filename, encoding="utf-8") as myFile:
         while True:
