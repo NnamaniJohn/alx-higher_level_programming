@@ -12,7 +12,7 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-        if attrs != None:
+        if attrs is not None:
             d = dict(filter(lambda e: e[0] in attrs, self.__dict__.items()))
             return d
         else:
