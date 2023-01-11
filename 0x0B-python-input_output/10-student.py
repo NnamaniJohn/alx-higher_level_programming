@@ -12,8 +12,8 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-        if len(attrs) > 0 and type(attrs) == list:
-            return dict(filter(lambda ele: ele[0] in attrs,\
-                    self.__dict__.items()))
+        if attrs != None:
+            d = dict(filter(lambda e: e[0] in attrs, self.__dict__.items()))
+            return d
         else:
             return self.__dict__
