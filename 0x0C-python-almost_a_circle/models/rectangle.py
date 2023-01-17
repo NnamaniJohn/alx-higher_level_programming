@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 """Rectangle module"""
+
 from models.base import Base
 
 
@@ -72,11 +73,16 @@ class Rectangle(Base):
             for j in range(0, self.x):
                 print(" ", end="")
             for j in range(0, self.width):
-                print("#", end="")     
+                print("#", end="")
             print("")
 
     def __str__(self):
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+        i = self.id
+        x = self.x
+        y = self.y
+        w = self.width
+        h = self.height
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(i, x, y, w, h)
 
     def update(self, *args, **kwargs):
         if len(args) > 0:
