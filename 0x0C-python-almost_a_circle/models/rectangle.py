@@ -5,6 +5,7 @@ from models.base import Base
 
 
 class Rectangle(Base):
+    """Rectangle class"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
@@ -76,3 +77,39 @@ class Rectangle(Base):
 
     def __str__(self):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args, **kwargs):
+        if len(args) > 0:
+            n = 1
+            for arg in args:
+                if n == 1:
+                    self.id = arg
+                if n == 2:
+                    self.width = arg
+                if n == 3:
+                    self.height = arg
+                if n == 4:
+                    self.x = arg
+                if n == 5:
+                    self.y = arg
+                n += 1
+        else:
+            if "id" in kwargs.keys():
+                self.id = kwargs["id"]
+            if "width" in kwargs.keys():
+                self.width = kwargs["width"]
+            if "height" in kwargs.keys():
+                self.height = kwargs["height"]
+            if "x" in kwargs.keys():
+                self.x = kwargs["x"]
+            if "y" in kwargs.keys():
+                self.y = kwargs["y"]
+
+    def to_dictionary(self):
+        dic = {}
+        dic.update({"id": self.id})
+        dic.update({"width": self.width})
+        dic.update({"height": self.height})
+        dic.update({"x": self.x})
+        dic.update({"y": self.y})
+        return dic
