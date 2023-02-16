@@ -1,54 +1,49 @@
 #!/usr/bin/python3
-
-"""Square module"""
+'''Module for Square class.'''
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """Square class"""
+    '''A Square class.'''
 
     def __init__(self, size, x=0, y=0, id=None):
+        '''Constructor.'''
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
+        '''Returns string info about this square.'''
+        return '[{}] ({}) {}/{} - {}'.\
+            format(type(self).__name__, self.id, self.x, self.y, self.width)
 
     @property
     def size(self):
+        '''Size of this square.'''
         return self.width
 
     @size.setter
-    def size(self, size):
-        self.width = size
-        self.height = size
+    def size(self, value):
+        self.width = value
+        self.height = value
+
+    def __update(self, id=None, size=None, x=None, y=None):
+        '''Internal method that updates instance attributes via */**args.'''
+        if id is not None:
+            self.id = id
+        if size is not None:
+            self.size = size
+        if x is not None:
+            self.x = x
+        if y is not None:
+            self.y = y
 
     def update(self, *args, **kwargs):
-        if len(args) > 0:
-            n = 1
-            for arg in args:
-                if n == 1:
-                    self.id = arg
-                if n == 2:
-                    self.size = arg
-                if n == 3:
-                    self.x = arg
-                if n == 4:
-                    self.y = arg
-                n += 1
-        else:
-            if "id" in kwargs.keys():
-                self.id = kwargs["id"]
-            if "size" in kwargs.keys():
-                self.size = kwargs["size"]
-            if "x" in kwargs.keys():
-                self.x = kwargs["x"]
-            if "y" in kwargs.keys():
-                self.y = kwargs["y"]
+        '''Updates instance attributes via no-keyword & keyword args.'''
+        if args:
+            self.__update(*args)
+        elif kwargs:
+            self.__update(**kwargs)
 
     def to_dictionary(self):
-        dic = {}
-        dic.update({"id": self.id})
-        dic.update({"size": self.size})
-        dic.update({"x": self.x})
-        dic.update({"y": self.y})
-        return dic
+        '''Returns dictionary representation of this class.'''
+        return {"id": self.id, "size": self.width,
+                "x": self.x, "y": self.y}
